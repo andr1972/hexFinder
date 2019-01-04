@@ -1,0 +1,14 @@
+*.pdb
+*.obj
+*.idb
+*.tlog
+*.db
+*.opendb
+*.exe
+*.suo
+*.ilk
+*.user
+.vs/
+Debug/
+Release/
+x64/
