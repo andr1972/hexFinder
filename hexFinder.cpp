@@ -118,7 +118,7 @@ int main(int argc, char * argv[])
         printf("must be 4 parameters\n");
 	printf("call hexFinder hexBytes path/to/dir regexpname\n");
 	printf("where regexpname is in regex format : .*\\.bin - dosts and slash is needed!\n");
-        printf("example: hexFinder 1bc42df5 /home/user/dir \".*\"");
+        printf("example: hexFinder 1bc42df5 /home/user/dir \".*\"\n");
         for (int i=0; i<argc; i++)
                     printf("argv[%d]=%s\n",i,argv[i]);
 	if (argc != 4)
