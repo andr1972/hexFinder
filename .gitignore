@@ -12,3 +12,8 @@
 Debug/
 Release/
 x64/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+CMakeFiles/
+hexFinder

@@ -43,7 +43,7 @@ void secToString(long long nsec, char *buf)
 	else if (nsec > 60)
 		sprintf(buf, "%.2fmin", nsec / 60.0);
 	else 
-		sprintf(buf, "%d", nsec);
+		sprintf(buf, "%lld", nsec);
 }
 
 bool search(const char *fileNameToSearch, unsigned char* pat, unsigned char* txt, size_t patlen, size_t textlen)
@@ -115,20 +115,31 @@ vector<string> collectFiles(const string target_path, const string reg_str, size
 
 int main(int argc, char * argv[])
 {
+        printf("must be 4 parameters\n");
+	printf("call hexFinder hexBytes path/to/dir regexpname\n");
+	printf("where regexpname is in regex format : .*\\.bin - dosts and slash is needed!\n");
+        printf("example: hexFinder 1bc42df5 /home/user/dir \".*\"");
+        for (int i=0; i<argc; i++)
+                    printf("argv[%d]=%s\n",i,argv[i]);
 	if (argc != 4)
-	{
-		printf("call hexFinder hexBytes path/to/dir regexpname\n");
-		printf("where regexpname is in regex format : .*\.bin - dosts and slash is needed!\n");
-		printf("example: hexFinder 1bc42df5 /home/user/dir .*\\.bin\n");
 		return 0;
-	}
 	vector<unsigned char> v = fromHex(argv[1]);
 	vector<string> fileNames = collectFiles(argv[2], argv[3], dirsize);
 	printf("whole size = %.3f GB\n", dirsize / 1e9);
 	currenSize = 0;
 	start = std::chrono::system_clock::now();
 	for (string fileName: fileNames)
-		searchOneFile(fileName.c_str(), v);
+        {
+                //printf("%s\n",fileName.c_str());
+                try
+                {
+   		  searchOneFile(fileName.c_str(), v);
+                }
+                catch(...)
+                {
+                   printf("can't open file %s\n",fileName.c_str());
+                }
+        }
 	return 0;
 }
 
