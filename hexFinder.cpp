@@ -42,7 +42,7 @@ void secToString(long long nsec, char *buf)
 		sprintf(buf, "%.2fhours", nsec / 3600.0);
 	else if (nsec > 60)
 		sprintf(buf, "%.2fmin", nsec / 60.0);
-	else 
+	else
 		sprintf(buf, "%lld", nsec);
 }
 
@@ -60,7 +60,7 @@ bool search(const char *fileNameToSearch, unsigned char* pat, unsigned char* txt
 			double speed;
 			if (elapsed > 0)
 			{
-				speed = bytes / elapsed;			
+				speed = bytes / elapsed;
 				char buf[80];
 				secToString(elapsed, buf);
 				printf("%ss %.2fMB/s ", buf, speed / 1e6);
@@ -115,10 +115,10 @@ vector<string> collectFiles(const string target_path, const string reg_str, size
 
 int main(int argc, char * argv[])
 {
-        printf("must be 4 parameters\n");
+	printf("must be 4 parameters\n");
 	printf("call hexFinder hexBytes path/to/dir regexpname\n");
 	printf("where regexpname is in regex format : .*\\.bin - dosts and slash is needed!\n");
-        printf("example: hexFinder 1bc42df5 /home/user/dir \".*\"\n");
+	printf("example: hexFinder 1bc42df5 /home/user/dir \".*\"\n");
         for (int i=0; i<argc; i++)
                     printf("argv[%d]=%s\n",i,argv[i]);
 	if (argc != 4)
